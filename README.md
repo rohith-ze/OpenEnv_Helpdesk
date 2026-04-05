@@ -1,11 +1,9 @@
-***
-
-```markdown
 # 🎧 OpenEnv: Helpdesk Triage & Resolution Environment
 
 An OpenEnv-compliant simulation of a real-world e-commerce customer support workflow. 
 
 ## 🌍 Environment Description & Motivation
+
 While many AI agent benchmarks focus on web-browsing or game-playing, real-world enterprise value lies in **workflow automation**. This environment simulates a multi-step Customer Support workflow. 
 
 To succeed, an agent cannot simply be a reactive chatbot; it must act as a fully autonomous worker. It must:
@@ -27,7 +25,7 @@ The environment features three graded tasks (scored `0.0` to `1.0`), escalating 
 | :--- | :--- | :--- |
 | **Easy** | Route a simple 'forgot password' ticket. | The agent must identify the intent and use the `route_ticket` action with the correct parameter (`"IT"`). Tests basic classification and single-tool use. |
 | **Medium** | Answer a question about the return policy. | The agent must `search_kb` to retrieve the policy, store the answer in its context, and `draft_reply` accurately stating the 30-day policy. Tests memory and multi-step tool chaining. |
-| **Hard** | Handle a damaged item complaint. | The agent must `check_order` to find the total order value ($1000), calculate a 20% partial refund, `issue_refund` for the exact calculated integer amount ($200), and `draft_reply` with an apology. Tests mathematical reasoning, DB lookups, and strict rule-following. |
+| **Hard** | Handle a damaged item complaint. | The agent must `check_order` to find the total order value ($1000), calculate a 20% partial refund, `issue_refund` for the exact calculated amount ($200), and `draft_reply` with an apology. Tests mathematical reasoning, DB lookups, and strict rule-following. |
 
 ---
 
@@ -35,10 +33,11 @@ The environment features three graded tasks (scored `0.0` to `1.0`), escalating 
 
 ### Action Space
 Agents must output strict JSON matching this Pydantic schema:
+
 ```json
 {
   "action_type": "string",
-  "parameters": "dict"
+  "parameters": {}
 }
 ```
 **Available `action_type` values:**
@@ -108,6 +107,4 @@ python src/baseline.py
   "hard": 1.0
 }
 ```
-
----
 ```
