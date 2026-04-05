@@ -1,0 +1,11 @@
+name: "Helpdesk-Triage-Env"
+version: "1.0.0"
+description: "A real-world e-commerce helpdesk simulation requiring KB queries, DB lookups, and customer communications."
+domain: "Customer Support"
+tasks:
+  - id: "easy_1"
+    difficulty: "easy"
+  - id: "medium_1"
+    difficulty: "medium"
+  - id: "hard_1"
+    difficulty: "hard"
